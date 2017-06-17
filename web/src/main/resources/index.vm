@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Mancala</title>
+	<link rel="stylesheet" type="text/css" href="${req.contextPath}/css/mancala.css" />
+</head>
+<body>
+	<h1>Mancala</h1>
+	<a href="${req.contextPath}/new-game.vm/">New game</a>
+	#set( $board = $controller.getBoard() )
+	<p style="color: red;">${controller.getMessage()}</p>
+	<table>
+	  <tr>
+	  	<th>Name</th>
+	  	<th>Board</th>
+	  </tr>
+	#foreach( $player in $board.getPlayers() )
+      <tr>
+        <td>
+          #if ($player.isActive())
+          	<strong>
+          #end
+          ${player.name}
+          #if ($player.isActive())
+          	<strong>
+          #end          
+        </td>
+        <td>
+          <table class="board">
+            <tr>
+            #set( $stores = $player.getStores() )
+            #foreach( $store in $stores )
+              #if ( $controller.isComputable( $player ) )
+              <td>
+                ${store}
+              </td>
+	          #else
+              <td>
+                <a href="${req.contextPath}/index.vm/play/${player.name}/${velocityCount}">${store}</a>
+              </td>
+              #end             
+            #end  
+              <td class="board-score">
+                ${player.getScore()}
+              </td>
+            </tr>
+          </table>
+          #if (${player.isWinner()})          
+	          <img src="${req.contextPath}/images/winner.jpg"/>
+          #end
+        </td>
+      </tr>
+   #end
+   </table>
+<body>
+</html>

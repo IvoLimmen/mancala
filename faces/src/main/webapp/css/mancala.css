@@ -1,0 +1,33 @@
+body {
+	font-family: sans-serif;	
+}
+
+h1 {
+	text-decoration: underline;
+}
+
+table {
+	border-width: thin;
+	border-style: solid;
+}
+	
+table th {
+	background-color: black;
+	color: white;
+}
+
+.board {
+	border-width: thin;
+	border-style: solid;
+}
+
+.board tr td {
+	width: 50px;
+	text-align: center; 	
+}
+
+.board-score {
+	width: 50px;
+	text-align: center;
+	background-color: yellow; 	
+}

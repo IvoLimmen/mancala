@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+
+	<navigation-rule>
+		<from-view-id>/game.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>setup</from-outcome>
+			<to-view-id>/setup.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/setup.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>start</from-outcome>
+			<to-view-id>/game.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addplayer</from-outcome>
+			<to-view-id>/setup.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>removeplayer</from-outcome>
+			<to-view-id>/setup.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<managed-bean>
+		<description>the application game controller</description>
+		<managed-bean-name>gameController</managed-bean-name>
+		<managed-bean-class>nl.sogyo.mancala.faces.controller.GameController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+</faces-config>

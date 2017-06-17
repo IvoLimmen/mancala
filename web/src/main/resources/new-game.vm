@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Mancala - Create a new game</title>
+	<link rel="stylesheet" type="text/css" href="${req.contextPath}/css/mancala.css" />
+</head>
+<body>
+	<h1>Create a new game</h1>
+	<p style="color: red;">${controller.getMessage()}</p>
+	#set( $players = $controller.getPlayers() )
+	<table border="1">
+	  <tr>
+	  	<th>Name</th>
+	  	<th>&nbsp;</th>
+	  </tr>
+	#foreach( $player in $players )
+      <tr>
+        <td>
+          ${player.name}
+        </td>
+        <td>
+          <a href="${req.contextPath}/new-game.vm/player/remove/${player.name}">Remove</a>
+        </td>
+      </tr>
+   #end
+   </table>
+   <h1>Add player</h1>
+   <form method="post" action="${req.contextPath}/new-game.vm/player/add">
+   <table>
+	<tr>
+		<td>Name</td>
+		<td><input type="text" name="name"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="submit" value="Add"></td>
+	</tr>
+   <table>
+   </form>
+   <form method="post" action="${req.contextPath}/index.vm/start">
+   <table>
+	<tr>
+		<td>Stores</td>
+		<td><input type="text" name="stores"></td>
+	</tr>
+	<tr>
+		<td>Beads</td>
+		<td><input type="text" name="beads"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="submit" value="Start"></td>
+	</tr>
+   <table>
+   </form>
+<body>
+</html>
